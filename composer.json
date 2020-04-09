@@ -1,5 +1,5 @@
 {
-    "name": "thormeier/breadcrumb-bundle",
+    "name": "marco-mdl/breadcrumb-bundle",
     "type": "symfony-bundle",
     "description": "Symfony bundle for easy setup of breadcrumbs",
     "license": "MIT",
