@@ -2,6 +2,10 @@
 
 namespace Thormeier\BreadcrumbBundle\Tests\Routing;
 
+use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit_Framework_TestCase;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use Thormeier\BreadcrumbBundle\Model\Breadcrumb;
@@ -10,7 +14,7 @@ use Thormeier\BreadcrumbBundle\Routing\BreadcrumbAttachLoader;
 /**
  * Tests the router loader that hooks in and attaches the breadcrumb options to _breadcrumb defaults
  */
-class BreadcrumbAttachLoaderTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbAttachLoaderTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var BreadcrumbAttachLoader
@@ -18,7 +22,7 @@ class BreadcrumbAttachLoaderTest extends \PHPUnit_Framework_TestCase
     private $loader;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Symfony\Component\Config\Loader\LoaderResolverInterface
+     * @var PHPUnit_Framework_MockObject_MockObject|LoaderResolverInterface
      */
     private $delegatingLoader;
 
@@ -27,7 +31,7 @@ class BreadcrumbAttachLoaderTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        /** @var \PHPUnit_Framework_MockObject_MockObject|\Symfony\Component\Config\Loader\LoaderInterface $delegatingLoader */
+        /** @var PHPUnit_Framework_MockObject_MockObject|LoaderInterface $delegatingLoader */
         $delegatingLoader = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')
             ->setMethods(array('load'))
             ->getMockForAbstractClass();

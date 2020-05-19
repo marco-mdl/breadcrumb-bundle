@@ -2,9 +2,8 @@
 
 namespace Thormeier\BreadcrumbBundle\Provider;
 
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Thormeier\BreadcrumbBundle\Model\Breadcrumb;
 use Thormeier\BreadcrumbBundle\Model\BreadcrumbCollectionInterface;
 use Thormeier\BreadcrumbBundle\Model\BreadcrumbInterface;
 
@@ -21,7 +20,7 @@ class BreadcrumbProvider implements BreadcrumbProviderInterface
     /**
      * @var BreadcrumbCollectionInterface
      */
-    private $breadcrumbs = null;
+    private $breadcrumbs = NULL;
 
     /**
      * @var string
@@ -46,12 +45,12 @@ class BreadcrumbProvider implements BreadcrumbProviderInterface
     /**
      * Listen to the kernelRequest event to get the breadcrumb config from the request
      *
-     * @param GetResponseEvent $event
+     * @param RequestEvent $event
      */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(RequestEvent $event)
     {
         if ($event->getRequestType() === HttpKernelInterface::MASTER_REQUEST) {
-            $this->requestBreadcrumbConfig = $event->getRequest()->attributes->get('_breadcrumbs', array());
+            $this->requestBreadcrumbConfig = $event->getRequest()->attributes->get('_breadcrumbs', []);
         }
     }
 
@@ -60,7 +59,7 @@ class BreadcrumbProvider implements BreadcrumbProviderInterface
      */
     public function getBreadcrumbs()
     {
-        if (null === $this->breadcrumbs) {
+        if (NULL === $this->breadcrumbs) {
             $this->breadcrumbs = $this->generateBreadcrumbCollectionFromRequest();
         }
 
@@ -94,7 +93,7 @@ class BreadcrumbProvider implements BreadcrumbProviderInterface
 
         $model = $this->modelClass;
 
-        if (null !== $this->requestBreadcrumbConfig) {
+        if (NULL !== $this->requestBreadcrumbConfig) {
             foreach ($this->requestBreadcrumbConfig as $rawCrumb) {
                 $collection->addBreadcrumb(new $model(
                     $rawCrumb['label'], $rawCrumb['route']

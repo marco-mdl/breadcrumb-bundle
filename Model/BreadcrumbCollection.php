@@ -2,6 +2,8 @@
 
 namespace Thormeier\BreadcrumbBundle\Model;
 
+use InvalidArgumentException;
+
 /**
  * Breadcrumb collection that holds all breadcrumbs and allows special operations on it
  */
@@ -65,7 +67,7 @@ class BreadcrumbCollection implements BreadcrumbCollectionInterface
     }
 
     /**
-     * @param Breadcrumb $breadcrumb
+     * @param BreadcrumbInterface $breadcrumb
      *
      * @return $this
      */
@@ -112,7 +114,7 @@ class BreadcrumbCollection implements BreadcrumbCollectionInterface
         $position = array_search($breadcrumb, $this->breadcrumbs);
 
         if (false === $position) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Breadcrumb for route "%s" with label "%s" not found',
                 $breadcrumb->getRoute(),
                 $breadcrumb->getLabel()

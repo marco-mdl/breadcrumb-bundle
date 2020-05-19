@@ -2,6 +2,8 @@
 
 namespace Thormeier\BreadcrumbBundle\Routing;
 
+use InvalidArgumentException;
+use LogicException;
 use Symfony\Component\Config\Loader\Loader;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Routing\Route;
@@ -75,7 +77,7 @@ class BreadcrumbAttachLoader extends Loader
 
         // No label, no crumb.
         if (false === isset($breadcrumbOptions['label'])) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Label for breadcrumb on route "%s" must be configured',
                 $routeKey
             ));
@@ -88,7 +90,7 @@ class BreadcrumbAttachLoader extends Loader
 
         // If this route already is in the raw collection, there's likely a circular breadcrumb, which will cause memory exhaustion
         if (false !== array_search($rawCrumb, $rawBreadcrumbsCollection)) {
-            throw new \LogicException(sprintf(
+            throw new LogicException(sprintf(
                 'Circular breadcrumbs detected at route "%s"',
                 $routeKey
             ));

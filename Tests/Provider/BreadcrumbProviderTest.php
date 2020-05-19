@@ -2,6 +2,8 @@
 
 namespace Thormeier\BreadcrumbBundle\Tests\Provider;
 
+use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit_Framework_TestCase;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -10,7 +12,7 @@ use Thormeier\BreadcrumbBundle\Provider\BreadcrumbProvider;
 /**
  * Provider class test
  */
-class BreadcrumbProviderTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbProviderTest extends PHPUnit_Framework_TestCase
 {
     const MODEL_CLASS = 'Thormeier\BreadcrumbBundle\Model\Breadcrumb';
 
@@ -22,7 +24,7 @@ class BreadcrumbProviderTest extends \PHPUnit_Framework_TestCase
     private $responseEvent;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|ParameterBag
+     * @var PHPUnit_Framework_MockObject_MockObject|ParameterBag
      */
     private $requestAttributes;
 

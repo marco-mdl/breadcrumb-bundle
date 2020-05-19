@@ -2,6 +2,7 @@
 
 namespace Thormeier\BreadcrumbBundle\Tests\Model;
 
+use PHPUnit_Framework_TestCase;
 use Thormeier\BreadcrumbBundle\Model\Breadcrumb;
 use Thormeier\BreadcrumbBundle\Model\BreadcrumbCollection;
 
@@ -10,7 +11,7 @@ use Thormeier\BreadcrumbBundle\Model\BreadcrumbCollection;
  *
  * Test array logic of collection
  */
-class BreadcrumbCollectionTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbCollectionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Test normal adding of breadcrumbs

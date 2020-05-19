@@ -2,6 +2,8 @@
 
 namespace Thormeier\BreadcrumbBundle\Tests\Twig;
 
+use PHPUnit_FrameWork_MockObject_MockObject;
+use PHPUnit_Framework_TestCase;
 use Thormeier\BreadcrumbBundle\Model\BreadcrumbCollection;
 use Thormeier\BreadcrumbBundle\Provider\BreadcrumbProvider;
 use Thormeier\BreadcrumbBundle\Twig\BreadcrumbExtension;
@@ -9,7 +11,7 @@ use Thormeier\BreadcrumbBundle\Twig\BreadcrumbExtension;
 /**
  * Test for twig extension
  */
-class BreadcrumbExtensionTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbExtensionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var string dummy template name
@@ -39,7 +41,7 @@ class BreadcrumbExtensionTest extends \PHPUnit_Framework_TestCase
             ->method('render')
             ->will($this->returnCallback(array($this, 'renderCallback')));
 
-        /** @var \PHPUnit_FrameWork_MockObject_MockObject|BreadcrumbProvider $provider */
+        /** @var PHPUnit_FrameWork_MockObject_MockObject|BreadcrumbProvider $provider */
         $provider = $this->getMockBuilder('\Thormeier\BreadcrumbBundle\Provider\BreadcrumbProvider')
             ->disableOriginalConstructor()
             ->getMock();
